@@ -10,7 +10,6 @@ function App() {
     <>
       <Titulo content={ "Noticias" }></Titulo>
       <Buscador></Buscador>
-      <ContenedorNoticias></ContenedorNoticias>
     </>
   )
 }
