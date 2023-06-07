@@ -1,10 +1,12 @@
 import './App.css'
+import Titulo from './components/Titulo';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
   return (
     <>
-      <h1>proyecto react</h1>
+      <Titulo content={ "Noticias" }></Titulo>
     </>
   )
 }
