@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Titulo = ({ content }) => {
     return (
@@ -7,5 +8,9 @@ const Titulo = ({ content }) => {
         </section>
     );
 };
+
+Titulo.propTypes = {
+    content: PropTypes.string
+}
 
 export default Titulo;
