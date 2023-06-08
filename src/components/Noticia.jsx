@@ -5,14 +5,10 @@ import { Button, Col } from 'react-bootstrap';
 
 const Noticia = ({ noticia }) => {
 
-    if (!noticia.image_url) {
-        return null;
-    }
-
     return (
         <Col md="6" lg="4">
             <Card className='mx-2 mb-4 p-3 bg-dark text-light'>
-                <Card.Img variant="top" src={noticia.image_url} alt={noticia.title} />
+                <Card.Img variant="top" src={noticia.image_url ? noticia.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"} alt={noticia.title} />
                 <Card.Body>
                     <p>{noticia.source_id}</p>
                     <Card.Title>{noticia.title}</Card.Title>
