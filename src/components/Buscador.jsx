@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Form, Row, Col } from 'react-bootstrap';
+import { Container, Form, Row, Col, Spinner } from 'react-bootstrap';
 import ContenedorNoticias from './ContenedorNoticias';
 import { getNewsByCategory } from "../components/helpers/queries"
 
@@ -7,6 +7,7 @@ const Buscador = () => {
 
     const [category, setCategory] = useState("politics");
     const [news, setNews] = useState([]);
+    const [showSpinner, setShowSpinner] = useState(true);
 
     const handleCategoryChange = (event) => {
         setCategory(event.target.value);
@@ -16,15 +17,19 @@ const Buscador = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setShowSpinner(true);
                 const response = await getNewsByCategory(category);
                 setNews(response.results);
+                setShowSpinner(false);
             } catch (err) {
                 setNews([]);
             }
         };
       
         fetchData();
-      }, [category]);
+    }, [category]);
+
+      const showComponent = (showSpinner) ? (<div className="my-5"><Spinner animation="border" variant="primary" /></div>) : <ContenedorNoticias news={news}></ContenedorNoticias>;
 
     return (
         <Container className='text-light mt-5 text-center'>
@@ -42,7 +47,7 @@ const Buscador = () => {
                     </Col>
                 </Form.Group>
             </Form>
-            <ContenedorNoticias news={news}></ContenedorNoticias>
+            {showComponent}
         </Container>
     );
 };
