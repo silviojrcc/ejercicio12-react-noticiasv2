@@ -3,20 +3,25 @@ import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { Button, Col } from 'react-bootstrap';
 
-const Noticia = () => {
+const Noticia = ({ noticia }) => {
+
+    if (!noticia.image_url) {
+        return null;
+    }
+
     return (
         <Col md="6" lg="4">
             <Card className='mx-2 mb-4 p-3 bg-dark text-light'>
-                <Card.Img variant="top" src="https://placehold.co/600x400" />
+                <Card.Img variant="top" src={noticia.image_url} alt={noticia.title} />
                 <Card.Body>
-                    <p>Diario el noticiudo</p>
-                    <Card.Title>Titulo Noticia</Card.Title>
+                    <p>{noticia.source_id}</p>
+                    <Card.Title>{noticia.title}</Card.Title>
                     <Card.Text>
-                        Hay una guerra de payasos en la peatonal muñecas
+                        {noticia.description}
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className='d-flex justify-content-center p-3'>
-                    <Button as='a' href='https://google.com'>Ver noticia completa</Button>
+                    <Button as='a' href={noticia.link}>Ver noticia completa</Button>
                 </Card.Footer>
             </Card>
         </Col>

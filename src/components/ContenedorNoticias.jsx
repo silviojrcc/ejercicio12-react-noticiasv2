@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import Noticia from './Noticia';
 
-const ContenedorNoticias = (props) => {
+const ContenedorNoticias = ({ news }) => {
     return (
         <Container>
             <section className='d-flex row justify-content-around mt-4 p-5'>
-                <Noticia></Noticia>
-                <Noticia></Noticia>
-                <Noticia></Noticia>
-                <Noticia></Noticia>
+                {news.map(noticia => <Noticia key={noticia.title} noticia={noticia} />)}
             </section>
         </Container>
     );
