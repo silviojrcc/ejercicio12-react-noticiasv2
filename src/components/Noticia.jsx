@@ -29,7 +29,13 @@ const Noticia = ({ noticia }) => {
 };
 
 Noticia.propTypes = {
-    
+    noticia: PropTypes.shape({
+        image_url: PropTypes.string,
+        source_id: PropTypes.string,
+        title: PropTypes.string,
+        description: PropTypes.string,
+        link: PropTypes.string,
+    }).isRequired,
 };
 
 export default Noticia;
