@@ -1,7 +1,7 @@
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export const getNewsByCategoryAndCountry = async(category, country) => {
-    const url = `https://newsdata.io/api/1/news?apikey=${ API_KEY }&category=${ category }&country=${ country }`;
+    const url = `https://newsdata.io/api/1/news?apikey=${ apiKey }&category=${ category }&country=${ country }`;
 
     try{
         const response = await fetch(url);
